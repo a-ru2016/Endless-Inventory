@@ -1,0 +1,29 @@
+{
+  "page.endinv.all_items": "全アイテム",
+  "page.endinv.block_items": "ブロック",
+  "page.endinv.weapons": "武器",
+  "page.endinv.tools": "ツール",
+  "page.endinv.equipments": "装備",
+  "page.endinv.consumable": "食料とポーション",
+  "page.endinv.enchanted_books": "エンチャント本",
+  "page.endinv.vanishing_enchantable": "耐久アイテム",
+  "page.endinv.bookmark": "ブックマーク",
+
+  "button.endinv.reverse": "逆順ソート",
+
+  "key.categories.endinv": "Endless Inventory",
+  "key.endinv.open_endinv_menu": "EndInvメニューを開く",
+  "key.endinv.quick_move_item": "アイテムをクイック移動",
+  "key.endinv.star_item": "アイテムをお気に入り登録",
+
+  "sorttype.endinv.default": "デフォルトソート",
+  "sorttype.endinv.count": "個数順",
+  "sorttype.endinv.name": "名前順(名前空間順)",
+  "sorttype.endinv.id": "登録順",
+  "sorttype.endinv.last_modified": "更新日時順",
+
+  "search.endinv.prefix.sharp": "#->アイテムタグで検索",
+  "search.endinv.prefix.at": "@->名前空間で検索",
+  "search.endinv.prefix.xor": "^->ツールチップで検索",
+  "search.endinv.prefix.star": "*->IDで検索"
+}

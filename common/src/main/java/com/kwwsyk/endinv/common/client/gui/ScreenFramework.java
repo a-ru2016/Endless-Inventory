@@ -123,6 +123,9 @@ public class ScreenFramework implements PageManager{
 
         //---construct and switch displaying pages---
         switchPageWithId(layout.pageRegKey());
+        if (this.displayingPage == null && !pages.isEmpty()) {
+            switchPageWithIndex(0);
+        }
         //add widgets when base info are all prepared including displayingPage
         addWidgets();
 
@@ -170,6 +173,9 @@ public class ScreenFramework implements PageManager{
 
         //---construct and switch displaying pages---
         switchPageWithId(layout.pageRegKey());
+        if (this.displayingPage == null && !pages.isEmpty()) {
+            switchPageWithIndex(0);
+        }
 
         //add widgets when base info are all prepared including displayingPage
         addWidgets();
@@ -237,8 +243,11 @@ public class ScreenFramework implements PageManager{
 
     public void renderBg(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         SFBgRenderer.renderBg(guiGraphics, partialTick, mouseX, mouseY);
-        getDisplayingPage().initRenderer(this, getPageX(), getPageY());
-        getDisplayingPage().renderBg(SFBgRenderer, guiGraphics, partialTick, mouseX, mouseY);
+        DisplayPage displayingPage = getDisplayingPage();
+        if (displayingPage != null) {
+            displayingPage.initRenderer(this, getPageX(), getPageY());
+            displayingPage.renderBg(SFBgRenderer, guiGraphics, partialTick, mouseX, mouseY);
+        }
     }
 
     private boolean isHoveringOnPage;
@@ -249,8 +258,11 @@ public class ScreenFramework implements PageManager{
 
         isHoveringOnPage = hasClickedOnPage(mouseX, mouseY);
 
-        getDisplayingPage().initRenderer(this, getPageX(), getPageY());
-        getDisplayingPage().render(guiGraphics, mouseX, mouseY, partialTick);
+        DisplayPage displayingPage = getDisplayingPage();
+        if (displayingPage != null) {
+            displayingPage.initRenderer(this, getPageX(), getPageY());
+            displayingPage.render(guiGraphics, mouseX, mouseY, partialTick);
+        }
 
         if (searchBox.isHovered() && !searchBox.isFocused()) guiGraphics.renderTooltip(mc.font, List.of(
                 Component.translatable("search.endinv.prefix.sharp"),
@@ -588,6 +600,9 @@ public class ScreenFramework implements PageManager{
 
     @Override
     public DisplayPage getDisplayingPage() {
+        if (displayingPage == null && !pages.isEmpty()) {
+            switchPageWithIndex(0);
+        }
         return displayingPage;
     }
 }
